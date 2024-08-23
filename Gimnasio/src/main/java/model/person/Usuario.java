@@ -20,5 +20,6 @@ public class Usuario extends Persona {
         this.correo = correo;
         this.contrasena = contrasena;
     }
+
     
 }
