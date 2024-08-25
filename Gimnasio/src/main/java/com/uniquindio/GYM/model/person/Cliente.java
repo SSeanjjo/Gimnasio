@@ -1,10 +1,10 @@
-package model.person;
+package com.uniquindio.GYM.model.person;
 
-import model.Persona;
+import com.uniquindio.GYM.model.Usuario;
 
 import java.util.ArrayList;
 
-public class Usuario extends Persona {
+public class Cliente extends Usuario {
     private String direccion;
     private String telefono;
     private String correo;
@@ -13,7 +13,7 @@ public class Usuario extends Persona {
 
 
     //Crear
-    public Usuario(String cedula, String nombre, String direccion, String telefono, String correo, String contrasena) {
+    public Cliente(String cedula, String nombre, String direccion, String telefono, String correo, String contrasena) {
         super(cedula, nombre);
         this.direccion = direccion;
         this.telefono = telefono;

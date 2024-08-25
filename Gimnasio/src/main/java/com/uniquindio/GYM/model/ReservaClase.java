@@ -1,0 +1,41 @@
+package com.uniquindio.GYM.model;
+import java.time.LocalDate;
+
+import com.uniquindio.GYM.model.person.Cliente;
+import com.uniquindio.GYM.model.Clase;
+
+
+public class ReservaClase {
+    private Clase clase;
+    private Cliente cliente;
+    private LocalDate fechaReserva;
+    public ReservaClase(Clase clase, Cliente cliente, LocalDate fechaReserva) {
+        this.clase = clase;
+        this.cliente = cliente;
+        this.fechaReserva = fechaReserva;
+    }
+    public Clase getClase() {
+        return clase;
+    }
+    public void setClase(Clase clase) {
+        this.clase = clase;
+    }
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    public LocalDate getFechaReserva() {
+        return fechaReserva;
+    }
+    public void setFechaReserva(LocalDate fechaReserva) {
+        this.fechaReserva = fechaReserva;
+    }
+    @Override
+    public String toString() {
+        return "ReservaClase [clase=" + clase + ", cliente=" + cliente + ", fechaReserva=" + fechaReserva + "]";
+    }
+    
+
+}
