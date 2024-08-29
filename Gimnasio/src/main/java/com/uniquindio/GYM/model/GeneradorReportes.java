@@ -1,11 +1,8 @@
-package com.uniquindio.GYM.model.person;
+package com.uniquindio.GYM.model;
 
-import com.uniquindio.GYM.model.Clase;
-import com.uniquindio.GYM.model.TipoEntrenamiento;
-import com.uniquindio.GYM.model.RegistroEntrenamiento;
+import com.uniquindio.GYM.model.person.Cliente;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class GeneradorReportes {
     public void clasePopular(ArrayList<Clase> listaClases) {
