@@ -13,7 +13,9 @@ public class Comprobador{
             }
         }
         // Si no se encuentra la cédula después de recorrer toda la lista
-        throw new RuntimeException("No existe ningún registro asociado a esta cédula");
+        System.out.println("No existe ningún registro asociado a esta cédula");
+//        throw new RuntimeException("No existe ningún registro asociado a esta cédula");
+        return null;
     }
 }
 

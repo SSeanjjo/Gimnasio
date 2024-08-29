@@ -12,16 +12,17 @@ public class Gimnasio {
     private String nombre;
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Instructor> listaEntrenadores;
-    private ArrayList<Clase> listaClases;
+    private ArrayList<Clase> listaClases = new ArrayList<Clase>();
+    private ArrayList<ReservaClase> listaReservas;
     private ArrayList<RegistroEntrenamiento> listaEntrenamientos;
 
 
-    public Gimnasio(String nombre, ArrayList<Cliente> listaClientes, ArrayList<Instructor> listaEntrenadores,
-            ArrayList<Clase> listaClases, ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
+    public Gimnasio(String nombre, ArrayList<Cliente> listaClientes, ArrayList<Instructor> listaEntrenadores, ArrayList<Clase> listaClases, ArrayList<ReservaClase> listaReservas, ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
         this.nombre = nombre;
         this.listaClientes = listaClientes;
         this.listaEntrenadores = listaEntrenadores;
         this.listaClases = listaClases;
+        this.listaReservas = listaReservas;
         this.listaEntrenamientos = listaEntrenamientos;
     }
 
@@ -33,6 +34,7 @@ public class Gimnasio {
         this.listaClientes = new ArrayList<Cliente>();
         this.listaEntrenadores = new ArrayList<Instructor>();
         this.listaClases = new ArrayList<Clase>();
+        this.listaReservas = new ArrayList<ReservaClase>();
         this.listaEntrenamientos = new ArrayList<RegistroEntrenamiento>();
     }
     public void quemarDatos(){
