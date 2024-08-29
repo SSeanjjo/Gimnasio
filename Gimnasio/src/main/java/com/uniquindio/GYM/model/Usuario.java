@@ -7,11 +7,14 @@ public abstract class Usuario {
     public Usuario(){
 
     }
+
     public Usuario(String cedula, String nombre){
         this.cedula = cedula;
         this.nombre = nombre;
 
     }
+
+
     public String getCedula() {
         return cedula;
     }

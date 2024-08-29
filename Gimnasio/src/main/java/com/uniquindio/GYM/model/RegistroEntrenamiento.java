@@ -43,7 +43,4 @@ public class RegistroEntrenamiento {
         return "RegistroEntrenamiento [tipoEntrenamiento=" + tipoEntrenamiento + ", duracion=" + duracion
                 + ", caloriasQuemadas=" + caloriasQuemadas + ", fechaEntrenamiento=" + fechaEntrenamiento + "]";
     }
-
-
-
 }
