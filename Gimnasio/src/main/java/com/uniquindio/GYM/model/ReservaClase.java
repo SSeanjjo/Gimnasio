@@ -3,15 +3,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.uniquindio.GYM.model.person.Cliente;
-import com.uniquindio.GYM.model.Clase;
+import lombok.Data;
 
-
+@Data
 public class ReservaClase {
     private Clase clase;
     private Cliente cliente;
     private LocalDate fechaReserva;
-
-
 
 
     public ReservaClase(Clase clase, Cliente cliente, LocalDate fechaReserva) {
@@ -20,52 +18,27 @@ public class ReservaClase {
         this.fechaReserva = fechaReserva;
     }
 
-    public void reservarClase( String elegirClase, ArrayList<Clase> listaClases){
-        for(Clase clase : listaClases){
-            if(clase.getNombre().equals(elegirClase)){
-                if(clase.getCapacidadPlazas() < clase.getCAPACIDADMAXIMA()){
-                    clase.setCapacidadPlazas(clase.getCapacidadPlazas() + 1);
-                    System.out.println("Reserva exitosa");
-                    ArrayList<ReservaClase> listaReservas = new ArrayList<>();
-                    listaReservas.add(new ReservaClase(clase, cliente, fechaReserva));
-                }
+
+public ArrayList<ReservaClase>  reservarClase( ReservaClase reservaClase, ArrayList<ReservaClase> listaReservas){
+        if(reservaClase.clase.getCapacidadPlazas() < reservaClase.clase.getCAPACIDADMAXIMA()){
+            reservaClase.clase.setCapacidadPlazas(reservaClase.clase.getCapacidadPlazas() + 1);
+            System.out.println("Reserva exitosa");
+            listaReservas.add(reservaClase);
+            return listaReservas;
+        }
+        return null;
+    }
+
+
+    public void cancelarClase( ArrayList<ReservaClase> listaReservas, String cedula, LocalDate fechaReserva){
+        for(ReservaClase reservaClase : listaReservas){
+            if(reservaClase.cliente.getCedula().equals(cedula) && reservaClase.fechaReserva.equals(fechaReserva)){
+                reservaClase.clase.setCapacidadPlazas(reservaClase.clase.getCapacidadPlazas() - 1);
+                listaReservas.remove(reservaClase);
+                // Se elimina la reserva de la lista de
+                System.out.println("Reserva cancelada");
             }
         }
     }
-
-//    public void cancelarClase( String elegirClase, ArrayList<Clase> listaClases, String cedula){
-//        for(Clase clase : listaClases){
-//            if(clase.getNombre().equals(elegirClase)){
-//                if()
-//                }
-//            }
-//        }
-//    }
-
-
-
-//    public Clase getClase() {
-//        return clase;
-//    }
-//    public void setClase(Clase clase) {
-//        this.clase = clase;
-//    }
-//    public Cliente getCliente() {
-//        return cliente;
-//    }
-//    public void setCliente(Cliente cliente) {
-//        this.cliente = cliente;
-//    }
-//    public LocalDate getFechaReserva() {
-//        return fechaReserva;
-//    }
-//    public void setFechaReserva(LocalDate fechaReserva) {
-//        this.fechaReserva = fechaReserva;
-//    }
-//    @Override
-//    public String toString() {
-//        return "ReservaClase [clase=" + clase + ", cliente=" + cliente + ", fechaReserva=" + fechaReserva + "]";
-//    }
-
 
 }
