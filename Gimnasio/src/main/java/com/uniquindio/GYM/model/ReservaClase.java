@@ -11,6 +11,9 @@ public class ReservaClase {
     private Cliente cliente;
     private LocalDate fechaReserva;
 
+
+
+
     public ReservaClase(Clase clase, Cliente cliente, LocalDate fechaReserva) {
         this.clase = clase;
         this.cliente = cliente;
@@ -27,9 +30,17 @@ public class ReservaClase {
                     listaReservas.add(new ReservaClase(clase, cliente, fechaReserva));
                 }
             }
-
-}
+        }
     }
+
+//    public void cancelarClase( String elegirClase, ArrayList<Clase> listaClases, String cedula){
+//        for(Clase clase : listaClases){
+//            if(clase.getNombre().equals(elegirClase)){
+//                if()
+//                }
+//            }
+//        }
+//    }
 
 
 

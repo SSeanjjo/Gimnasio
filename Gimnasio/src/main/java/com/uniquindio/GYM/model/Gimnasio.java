@@ -12,7 +12,7 @@ public class Gimnasio {
     private String nombre;
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Instructor> listaEntrenadores;
-    private ArrayList<Clase> listaClases;
+    private ArrayList<Clase> listaClases = new ArrayList<Clase>();
     private ArrayList<RegistroEntrenamiento> listaEntrenamientos;
 
 

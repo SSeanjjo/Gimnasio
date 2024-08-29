@@ -21,9 +21,9 @@ public class Clase {
 
     Gimnasio gimnasio = new Gimnasio();
 
-    public Clase(String id, String nombre, ArrayList<Sesion> horario, int capacidadPlazas, LocalDate fechaInicio,
+    public Clase(int id, String nombre, ArrayList<Sesion> horario, int capacidadPlazas, LocalDate fechaInicio,
             LocalDate fechaFin, boolean disponible, TipoClase tipoClase, Instructor instructor) {
-        this.id = id;
+        this.id = String.valueOf(id);
         this.nombre = nombre;
         this.horario = horario;
         this.capacidadPlazas = getCapacidadPlazas();
@@ -98,10 +98,9 @@ public class Clase {
             } else if ( clase.equals(horario)){
                 return clase;
             }
+        } System.out.println("No existe ningún registro asociado a esta cédula");
+        {
+            return null;
         }
-            throw new RuntimeException("No existe ningún registro asociado a esta cédula");
-        }
-
-
-
+    }
 }
