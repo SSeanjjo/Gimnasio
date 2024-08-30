@@ -28,13 +28,10 @@ public class Main {
             System.out.println(cliente.getNombre() + " - " + cliente.getCedula());
         }
         System.out.println(" --------------------------------------------------------------------------------");
-//        // Use Cliente methods
-        cliente1.actualizarCliente("101010101","Julian Casas Updated", "new address", "311302921", "new email", "new password");
-        System.out.println("Cliente Actualizado: " + cliente1);
-//        cliente1.removerCLiente();
 
-        cliente3.actualizarCliente("10273775","Andrea Gonzales", "Calle 4 83-26", "302399802", "Andre_Go@mail.com", "123456");
-        System.out.println("Cliente Actualizado: " + cliente3);
+        System.out.println("Cliente a actualizar: " + cliente3.getCedula() + " - " + cliente3.getNombre());
+        cliente3.actualizarCliente("10273775",  gimnasio.getListaClientes(),  new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf"));
+        System.out.println("Cliente Actualizado: " + cliente3.getCedula() + " - " + cliente3.getNombre());
 
 
         // Add instructors

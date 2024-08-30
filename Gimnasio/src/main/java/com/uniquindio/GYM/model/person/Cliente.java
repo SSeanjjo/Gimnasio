@@ -3,7 +3,12 @@ package com.uniquindio.GYM.model.person;
 import com.uniquindio.GYM.model.Gimnasio;
 import com.uniquindio.GYM.model.person.Comprobador;
 import com.uniquindio.GYM.model.Usuario;
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.ArrayList;
+
+@Data
 
 public class Cliente extends Usuario {
     private String direccion;
@@ -41,23 +46,25 @@ public class Cliente extends Usuario {
     }
 
     //    //update
-    public void actualizarCliente(String cedula, String nuevoNombre, String nuevaDireccion, String nuevoTelefono, String nuevoCorreo, String nuevaContrasena) {
-        Cliente clienteExistente = (Cliente) comprobador.comprobarExistencia((this.getCedula()), gimnasio.getListaClientes());{if (clienteExistente != null) {
-            clienteExistente.setNombre(nuevoNombre);
-            clienteExistente.setDireccion(nuevaDireccion);
-            clienteExistente.setTelefono(nuevoTelefono);
-            clienteExistente.setCorreo(nuevoCorreo);
-            clienteExistente.setContrasena(nuevaContrasena);
-            System.out.println("Cliente actualizado correctamente.");
-
-        } else {
-            System.out.println("No se encontró un cliente con la cédula especificada.");
+    public void actualizarCliente(String cedula, ArrayList<Cliente> listaClientes, Cliente clienteUpdate) {
+        boolean encontrado = false;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+                cliente.setNombre(clienteUpdate.getNombre());
+                cliente.setDireccion(clienteUpdate.getDireccion());
+                cliente.setTelefono(clienteUpdate.getTelefono());
+                cliente.setCorreo(clienteUpdate.getCorreo());
+                cliente.setContrasena(clienteUpdate.getContrasena());
+                System.out.println("Cliente actualizado correctamente.");
+                encontrado = true;
+            }
         }
-        }
+        if (!encontrado) System.out.println("No se encontró un cliente con la cédula especificada.");
     }
 
-    public void removerCLiente(){
-        Cliente clienteExistente = (Cliente) comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaClientes());{
+    public void removerCLiente() {
+        Cliente clienteExistente = (Cliente) comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaClientes());
+        {
             if (clienteExistente != null) {
                 gimnasio.getListaClientes().remove(clienteExistente);
                 System.out.println("Cliente eliminado correctamente.");
@@ -67,24 +74,6 @@ public class Cliente extends Usuario {
         }
     }
 
-    // Métodos setter para actualizar los atributos
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
 }
+
