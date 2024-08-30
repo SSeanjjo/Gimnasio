@@ -126,22 +126,36 @@ public class Main {
            System.out.println("\n");
 
         System.out.println("\n\t  ------------------------------------- Generador Reportes -------------------------------------------");
+//
         GeneradorReportes reportes = new GeneradorReportes();
         reportes.clasePopular(gimnasio.getListaClases());
+        System.out.println("\n");
 
-        ArrayList<RegistroEntrenamiento> topTresEntrenamientos = reportes.toptresUsuariosMasActivos(gimnasio.getListaEntrenamientos());
+        ArrayList<Cliente> topTresClientes = reportes.toptresUsuariosMasActivos(gimnasio.getListaEntrenamientos());
         reportes.ejercicioMasPracticado(gimnasio.getListaEntrenamientos());
 
-
-        System.out.println("\n\t ----------------------------- Top 3 clientes más activos -------------------------------------------------");
-        System.out.println("\n");
-        for (RegistroEntrenamiento entrenamiento : topTresEntrenamientos) {
-            Cliente cliente = entrenamiento.getCliente();
-            System.out.println(cliente.getNombre() + " - " +
-                    entrenamiento.getTipoEntrenamiento() + " - " +
-                    entrenamiento.getDuracion() + " minutos - " +
-                    entrenamiento.getCaloriasQuemadas() + " calorías quemadas");
+        // Print top 3 most active clients
+        System.out.println();
+        System.out.println("\n \n\t ----------------------------- Top 3 clientes más activos -------------------------------------------------");
+        for (Cliente cliente : topTresClientes) {
+            System.out.println(cliente.getNombre());
         }
+        System.out.println(" --------------------------------------------------------------------------------");
+
+
+//        // Use Comprobador methods
+//        Comprobador comprobador = new Comprobador();
+//        Usuario usuarioEncontrado = comprobador.comprobarExistencia("10273773", gimnasio.getListaClientes());
+//        System.out.println("\nUsuario encontrado: " + (usuarioEncontrado != null ? usuarioEncontrado.getNombre() : "No encontrado"));
+
+
+
+
+
+
+
+        
+
     }
 
 }
