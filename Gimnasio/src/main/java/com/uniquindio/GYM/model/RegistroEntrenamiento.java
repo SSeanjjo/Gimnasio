@@ -19,8 +19,8 @@ public class RegistroEntrenamiento {
         this.duracion = duracion;
         this.caloriasQuemadas = caloriasQuemadas;
         this.fechaEntrenamiento = fechaEntrenamiento;
-//        listaEntrenaminetos.add(this);
     }
+
     public void historialEntrenamientos(ArrayList<RegistroEntrenamiento> listaEntrenamientos, String cedula){
         for(RegistroEntrenamiento registroEntrenamiento : listaEntrenamientos){
             if(registroEntrenamiento.cliente.getCedula().equals(cedula)){

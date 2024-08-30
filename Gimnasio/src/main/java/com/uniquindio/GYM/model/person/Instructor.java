@@ -19,22 +19,9 @@ public class Instructor extends Usuario {
         this.especialidad = especialidad;
     }
 
-//    public EspecialidadEnum getEspecialidad() {
-//        return especialidad;
-//    }
-//
-//    public void setEspecialidad(EspecialidadEnum especialidad) {
-//        this.especialidad = especialidad;
-//    }
-
-//    public boolean comprobarExistencia(String cedula, ArrayList<Instructor> listaC){
-//        try{
-//            comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaEntrenadores());
-//            comprobador.comprobarExistencia(cedula, );
-//            return true;
-//        } catch (RuntimeException e) {
-//            return false;
-//        }
-//    }
-    
+    public boolean comprobarExistencia(String cedula, ArrayList<Instructor> listaInstructores) {
+        Instructor instructorExistente = comprobador.comprobarExistencia(cedula, listaInstructores);
+        return instructorExistente != null;
+    }
 }
+

@@ -57,7 +57,11 @@ public class Main {
             System.out.println(instructor.getNombre() + " - " + instructor.getCedula());
         }
 
-        System.out.println(" --------------------------------------------------------------------------------");
+        boolean exists = instructor3.comprobarExistencia("1183369235", gimnasio.getListaEntrenadores());
+        System.out.println("\nInstructor con cédula 1183369235 existe: " + exists);
+
+
+
 
         // Add sessions
         Sesion sesion1 = new Sesion(DiaSemana.lunes, LocalTime.of(7, 0), LocalTime.of(9, 0));
@@ -73,56 +77,74 @@ public class Main {
         gimnasio.getListaClases().add(new Clase(4, "Pilates", new ArrayList<>(Arrays.asList(sesion1, sesion3, sesion5)), 10, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 30), true, TipoClase.PILATES, instructor4));
         gimnasio.getListaClases().add(new Clase(5, "Aerobics", new ArrayList<>(Arrays.asList(sesion2, sesion4)), 10, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 30), true, TipoClase.AEROBICOS, instructor5));
 
-        // Add training records with different dates
-        RegistroEntrenamiento entrenamiento1 = new RegistroEntrenamiento(cliente1, TipoEntrenamiento.CARDIO, 60, 500, LocalDate.of(2024, 8, 21));
-        RegistroEntrenamiento entrenamiento2 = new RegistroEntrenamiento(cliente2, TipoEntrenamiento.PESAS, 45, 300, LocalDate.of(2024, 8, 22));
-        RegistroEntrenamiento entrenamiento3 = new RegistroEntrenamiento(cliente3, TipoEntrenamiento.YOGA, 90, 400, LocalDate.of(2024, 8, 23));
-        RegistroEntrenamiento entrenamiento4 = new RegistroEntrenamiento(cliente4, TipoEntrenamiento.CROSSFIT, 70, 600, LocalDate.of(2024, 8, 24));
-        RegistroEntrenamiento entrenamiento5 = new RegistroEntrenamiento(cliente5, TipoEntrenamiento.PILATES, 80, 550, LocalDate.of(2024, 8, 25));
 
-        gimnasio.getListaEntrenamientos().addAll(Arrays.asList(entrenamiento1, entrenamiento2, entrenamiento3, entrenamiento4, entrenamiento5));
-
-        // Print training records
-        System.out.println("\nRegistros de entrenamiento:");
-        for (RegistroEntrenamiento entrenamiento : gimnasio.getListaEntrenamientos()) {
-            System.out.println(entrenamiento.getCliente().getNombre() + " - " + entrenamiento.getTipoEntrenamiento() + " - " + entrenamiento.getFechaEntrenamiento());
-        }
-
-        // Use GeneradorReportes methods
-        GeneradorReportes reportes = new GeneradorReportes();
-        reportes.clasePopular(gimnasio.getListaClases());
-        ArrayList<Cliente> topTresClientes = reportes.toptresUsuariosMasActivos(gimnasio.getListaEntrenamientos());
-        reportes.ejercicioMasPracticado(gimnasio.getListaEntrenamientos());
-
-        // Print top 3 most active clients
-        System.out.println("\nTop 3 clientes más activos:");
-        for (Cliente cliente : topTresClientes) {
-            System.out.println(cliente.getNombre());
-        }
-
-        // Use Comprobador methods
-        Comprobador comprobador = new Comprobador();
-        Usuario usuarioEncontrado = comprobador.comprobarExistencia("10273773", gimnasio.getListaClientes());
-        System.out.println("\nUsuario encontrado: " + (usuarioEncontrado != null ? usuarioEncontrado.getNombre() : "No encontrado"));
-
-        // Use ReservaClase methods
-        ReservaClase reserva = new ReservaClase(gimnasio.getListaClases().get(0), cliente1, LocalDate.of(2024, 8, 22));
-        ArrayList<ReservaClase> listaReservas = new ArrayList<>();
-        listaReservas = ReservaClase.reservarClase(reserva, listaReservas);
-        ReservaClase.cancelarClase(listaReservas, "10273773", LocalDate.of(2024, 8, 22));
-
-
-        // Use RegistroEntrenamiento methods
-        entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273773");
-
-
-        System.out.println("\n--------------------------------------------------------------------------------");
+        System.out.println("\n--------------------------------Clases ------------------------------------------------");
 
         ArrayList<Clase> clase =  busquedaClase(TipoClase.ZUMBA, instructor1, sesion1, gimnasio.getListaClases());
         System.out.println("\nClases encontradas:");
         for (Clase c : clase) {
             System.out.println(c.getTipoClase() + " - " + c.getInstructor().getNombre() + " - " + c.getHorario());
         }
+        // Use ReservaClase methods
+        ReservaClase reserva = new ReservaClase(gimnasio.getListaClases().get(0), cliente1, LocalDate.of(2024, 8, 22));
+        ArrayList<ReservaClase> listaReservas = new ArrayList<>();
+        System.out.println('\n');
+        listaReservas = ReservaClase.reservarClase(reserva, listaReservas);
+        ReservaClase.cancelarClase(listaReservas, "10273773", LocalDate.of(2024, 8, 22));
+
+        System.out.println(" --------------------------------------------------------------------------------");
+        System.out.println(" ------------------------------------ Registro Entrenamientos--------------------------------------------");
+
+
+        // Add training records with different dates
+        RegistroEntrenamiento entrenamiento1 = new RegistroEntrenamiento(cliente1, TipoEntrenamiento.CARDIO, 60, 500, LocalDate.of(2024, 8, 21));
+        RegistroEntrenamiento entrenamiento2 = new RegistroEntrenamiento(cliente2, TipoEntrenamiento.PESAS, 45, 300, LocalDate.of(2024, 8, 22));
+        RegistroEntrenamiento entrenamiento3 = new RegistroEntrenamiento(cliente3, TipoEntrenamiento.YOGA, 90, 400, LocalDate.of(2024, 8, 23));
+        RegistroEntrenamiento entrenamiento4 = new RegistroEntrenamiento(cliente4, TipoEntrenamiento.CROSSFIT, 70, 600, LocalDate.of(2024, 8, 24));
+        RegistroEntrenamiento entrenamiento5 = new RegistroEntrenamiento(cliente5, TipoEntrenamiento.PILATES, 80, 550, LocalDate.of(2024, 8, 25));
+        gimnasio.getListaEntrenamientos().addAll(Arrays.asList(entrenamiento1, entrenamiento2, entrenamiento3, entrenamiento4, entrenamiento5));
+
+        System.out.println("\nRegistros de entrenamiento:");
+        for (RegistroEntrenamiento entrenamiento : gimnasio.getListaEntrenamientos()) {
+            System.out.println(entrenamiento.getCliente().getNombre() + " - " + entrenamiento.getTipoEntrenamiento() + " - " + entrenamiento.getDuracion() + " minutos - " + entrenamiento.getCaloriasQuemadas() + " calorías quemadas - " + entrenamiento.getFechaEntrenamiento());
+        }
+        System.out.println('\n');
+        entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273773");
+           System.out.println("\n");
+        entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273774");
+           System.out.println("\n");
+        entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273775");
+           System.out.println("\n");
+        entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273776");
+           System.out.println("\n");
+
+        System.out.println(" ------------------------------------- Generador Reportes -------------------------------------------");
+//
+        GeneradorReportes reportes = new GeneradorReportes();
+        reportes.clasePopular(gimnasio.getListaClases());
+        System.out.println("\n");
+        ArrayList<Cliente> topTresClientes = reportes.toptresUsuariosMasActivos(gimnasio.getListaEntrenamientos());
+        reportes.ejercicioMasPracticado(gimnasio.getListaEntrenamientos());
+
+        // Print top 3 most active clients
+        System.out.println();
+        System.out.println("\n ----------------------------- Top 3 clientes más activos -------------------------------------------------");
+        for (Cliente cliente : topTresClientes) {
+            System.out.println(cliente.getNombre());
+        }
+        System.out.println(" --------------------------------------------------------------------------------");
+
+
+//        // Use Comprobador methods
+//        Comprobador comprobador = new Comprobador();
+//        Usuario usuarioEncontrado = comprobador.comprobarExistencia("10273773", gimnasio.getListaClientes());
+//        System.out.println("\nUsuario encontrado: " + (usuarioEncontrado != null ? usuarioEncontrado.getNombre() : "No encontrado"));
+
+
+
+
+
+
 
         
 
