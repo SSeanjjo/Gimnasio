@@ -1,6 +1,8 @@
 package com.uniquindio.GYM.model;
+
 import com.uniquindio.GYM.model.person.Cliente;
 import lombok.Data;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -21,9 +23,9 @@ public class RegistroEntrenamiento {
         this.fechaEntrenamiento = fechaEntrenamiento;
     }
 
-    public void historialEntrenamientos(ArrayList<RegistroEntrenamiento> listaEntrenamientos, String cedula){
-        for(RegistroEntrenamiento registroEntrenamiento : listaEntrenamientos){
-            if(registroEntrenamiento.cliente.getCedula().equals(cedula)){
+    public void historialEntrenamientos(ArrayList<RegistroEntrenamiento> listaEntrenamientos, String cedula) {
+        for (RegistroEntrenamiento registroEntrenamiento : listaEntrenamientos) {
+            if (registroEntrenamiento.cliente.getCedula().equals(cedula)) {
                 registroEntrenamiento.getFechaEntrenamiento();
                 registroEntrenamiento.getTipoEntrenamiento();
                 registroEntrenamiento.getDuracion();

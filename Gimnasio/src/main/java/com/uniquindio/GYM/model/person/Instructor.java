@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 @Data
 public class Instructor extends Usuario {
-    private EspecialidadEnum especialidad;
     Gimnasio gimnasio = new Gimnasio();
     Comprobador comprobador = new Comprobador();
+    private EspecialidadEnum especialidad;
 
     public Instructor(String cedula, String nombre, EspecialidadEnum especialidad) {
         super(cedula, nombre);

@@ -11,25 +11,13 @@ import java.util.ArrayList;
 @Data
 
 public class Cliente extends Usuario {
+    ArrayList<String> listaUsuarios = new ArrayList<>();
+    Comprobador comprobador = new Comprobador();
+    Gimnasio gimnasio = new Gimnasio();
     private String direccion;
     private String telefono;
     private String correo;
     private String contrasena;
-    ArrayList<String> listaUsuarios = new ArrayList<>();
-
-    Comprobador comprobador = new Comprobador();
-    Gimnasio gimnasio = new Gimnasio();
-
-
-    //Consultar
-    public boolean comprobar() {
-        try {
-            comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaClientes());
-            return true;
-        } catch (RuntimeException e) {
-            return false;
-        }
-    }
 
 
     //Crear
@@ -60,6 +48,16 @@ public class Cliente extends Usuario {
             }
         }
         if (!encontrado) System.out.println("No se encontró un cliente con la cédula especificada.");
+    }
+
+    //Consultar
+    public boolean comprobar() {
+        try {
+            comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaClientes());
+            return true;
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 
 //    public void removerCLiente() {

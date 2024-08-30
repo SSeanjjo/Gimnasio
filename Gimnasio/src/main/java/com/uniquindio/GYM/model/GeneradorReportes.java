@@ -17,38 +17,38 @@ public class GeneradorReportes {
         System.out.println("La clase más popular es: " + listaClases.get(index).getNombre());
     }
 
-public ArrayList<RegistroEntrenamiento> toptresUsuariosMasActivos(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
-    RegistroEntrenamiento primeroEntrenamiento = null, segundoEntrenamiento = null, terceroEntrenamiento = null;
-    double primero = 0, segundo = 0, tercero = 0;
+    public ArrayList<RegistroEntrenamiento> toptresUsuariosMasActivos(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
+        RegistroEntrenamiento primeroEntrenamiento = null, segundoEntrenamiento = null, terceroEntrenamiento = null;
+        double primero = 0, segundo = 0, tercero = 0;
 
-    for (RegistroEntrenamiento entrenamiento : listaEntrenamientos) {
-        double caloriasQuemadas = entrenamiento.getCaloriasQuemadas();
+        for (RegistroEntrenamiento entrenamiento : listaEntrenamientos) {
+            double caloriasQuemadas = entrenamiento.getCaloriasQuemadas();
 
-        if (caloriasQuemadas > primero) {
-            tercero = segundo;
-            terceroEntrenamiento = segundoEntrenamiento;
-            segundo = primero;
-            segundoEntrenamiento = primeroEntrenamiento;
-            primero = caloriasQuemadas;
-            primeroEntrenamiento = entrenamiento;
-        } else if (caloriasQuemadas > segundo) {
-            tercero = segundo;
-            terceroEntrenamiento = segundoEntrenamiento;
-            segundo = caloriasQuemadas;
-            segundoEntrenamiento = entrenamiento;
-        } else if (caloriasQuemadas > tercero) {
-            tercero = caloriasQuemadas;
-            terceroEntrenamiento = entrenamiento;
+            if (caloriasQuemadas > primero) {
+                tercero = segundo;
+                terceroEntrenamiento = segundoEntrenamiento;
+                segundo = primero;
+                segundoEntrenamiento = primeroEntrenamiento;
+                primero = caloriasQuemadas;
+                primeroEntrenamiento = entrenamiento;
+            } else if (caloriasQuemadas > segundo) {
+                tercero = segundo;
+                terceroEntrenamiento = segundoEntrenamiento;
+                segundo = caloriasQuemadas;
+                segundoEntrenamiento = entrenamiento;
+            } else if (caloriasQuemadas > tercero) {
+                tercero = caloriasQuemadas;
+                terceroEntrenamiento = entrenamiento;
+            }
         }
+
+        ArrayList<RegistroEntrenamiento> topTresEntrenamientos = new ArrayList<>();
+        if (primeroEntrenamiento != null) topTresEntrenamientos.add(primeroEntrenamiento);
+        if (segundoEntrenamiento != null) topTresEntrenamientos.add(segundoEntrenamiento);
+        if (terceroEntrenamiento != null) topTresEntrenamientos.add(terceroEntrenamiento);
+
+        return topTresEntrenamientos;
     }
-
-    ArrayList<RegistroEntrenamiento> topTresEntrenamientos = new ArrayList<>();
-    if (primeroEntrenamiento != null) topTresEntrenamientos.add(primeroEntrenamiento);
-    if (segundoEntrenamiento != null) topTresEntrenamientos.add(segundoEntrenamiento);
-    if (terceroEntrenamiento != null) topTresEntrenamientos.add(terceroEntrenamiento);
-
-    return topTresEntrenamientos;
-}
 
 
     public void ejercicioMasPracticado(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {

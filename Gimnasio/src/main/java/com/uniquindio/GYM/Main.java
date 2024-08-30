@@ -2,6 +2,7 @@ package com.uniquindio.GYM;
 
 import com.uniquindio.GYM.model.*;
 import com.uniquindio.GYM.model.person.*;
+
 import java.time.*;
 import java.util.*;
 
@@ -12,7 +13,7 @@ import static com.uniquindio.GYM.model.person.Cliente.actualizarCliente;
 public class Main {
     public static void main(String[] args) {
         Gimnasio gimnasio = new Gimnasio("Gym Pro");
-        System.out.println("\t \t \t \t \t \t \t \t" + gimnasio.getNombre()+"\n");
+        System.out.println("\t \t \t \t \t \t \t \t" + gimnasio.getNombre() + "\n");
         System.out.println(" --------------------------------------- CLiente -----------------------------------------");
 
         Cliente cliente1 = new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf");
@@ -34,12 +35,13 @@ public class Main {
         }
         System.out.println('\n');
         System.out.println("Cliente a actualizar: " + cliente3.getCedula() + " - " + cliente3.getNombre());
-        actualizarCliente("10273775",  gimnasio.getListaClientes(),  new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf"));
+        actualizarCliente("10273775", gimnasio.getListaClientes(), new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf"));
         System.out.println("Cliente Actualizado: " + cliente3.getCedula() + " - " + cliente3.getNombre());
 
         cliente10.removerCliente("10273782", gimnasio.getListaClientes());
         System.out.println("Cliente: " + cliente10.getCedula() + " - " + cliente10.getNombre());
-        cliente1.removerCliente("0000", gimnasio.getListaClientes());;
+        cliente1.removerCliente("0000", gimnasio.getListaClientes());
+        ;
         System.out.println(" --------------------------------- Instructor -----------------------------------------------");
 
 
@@ -62,8 +64,6 @@ public class Main {
         System.out.println("\nInstructor con cédula 1183369235 existe: " + exists);
 
 
-
-
         // Add sessions
         Sesion sesion1 = new Sesion(DiaSemana.lunes, LocalTime.of(7, 0), LocalTime.of(9, 0));
         Sesion sesion2 = new Sesion(DiaSemana.martes, LocalTime.of(7, 0), LocalTime.of(9, 0));
@@ -81,7 +81,7 @@ public class Main {
 
         System.out.println("\n--------------------------------Clases ------------------------------------------------");
 
-        ArrayList<Clase> clase =  busquedaClase(TipoClase.ZUMBA, instructor1, sesion1, gimnasio.getListaClases());
+        ArrayList<Clase> clase = busquedaClase(TipoClase.ZUMBA, instructor1, sesion1, gimnasio.getListaClases());
         System.out.println("\nClases encontradas:");
         for (Clase c : clase) {
             System.out.println(c.getTipoClase() + " - " + c.getInstructor().getNombre() + " - " + c.getHorario());
@@ -90,14 +90,14 @@ public class Main {
         ReservaClase reserva1 = new ReservaClase(gimnasio.getListaClases().get(0), cliente1, LocalDate.of(2024, 8, 22));
         ReservaClase reserva2 = new ReservaClase(gimnasio.getListaClases().get(1), cliente2, LocalDate.of(2024, 8, 22));
         ReservaClase.reservarClase(reserva1, gimnasio.getListaReservas());
-        ArrayList<ReservaClase> listaReservas =  ReservaClase.reservarClase(reserva2, gimnasio.getListaReservas());
+        ArrayList<ReservaClase> listaReservas = ReservaClase.reservarClase(reserva2, gimnasio.getListaReservas());
         for (ReservaClase r : listaReservas) {
             System.out.println(r.getCliente().getNombre() + " - " + r.getClase().getNombre() + " - " + r.getFechaReserva());
             System.out.println("Reserva exitosa");
         }
 
-        System.out.println("\nreservas de usario a cancelar: " );
-        System.out.println(cliente1.getNombre() +" - "+cliente1.getCedula() + " - " + LocalDate.of(2024, 8, 22));
+        System.out.println("\nreservas de usario a cancelar: ");
+        System.out.println(cliente1.getNombre() + " - " + cliente1.getCedula() + " - " + LocalDate.of(2024, 8, 22));
         ArrayList<ReservaClase> listaReservasCancel = cancelarReserva(gimnasio.getListaReservas(), cliente1.getCedula(), LocalDate.of(2024, 8, 22));
         System.out.println("\nLista de reservas");
         for (ReservaClase r : listaReservasCancel) {
@@ -107,8 +107,6 @@ public class Main {
 
         System.out.println(" ------------------------------------ Registro Entrenamientos--------------------------------------------");
 
-
-        // Add training records with different dates
         RegistroEntrenamiento entrenamiento1 = new RegistroEntrenamiento(cliente1, TipoEntrenamiento.CARDIO, 60, 500, LocalDate.of(2024, 8, 21));
         RegistroEntrenamiento entrenamiento2 = new RegistroEntrenamiento(cliente2, TipoEntrenamiento.PESAS, 45, 300, LocalDate.of(2024, 8, 22));
         RegistroEntrenamiento entrenamiento3 = new RegistroEntrenamiento(cliente3, TipoEntrenamiento.YOGA, 90, 400, LocalDate.of(2024, 8, 23));
@@ -122,13 +120,13 @@ public class Main {
         }
         System.out.println('\n');
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273773");
-           System.out.println("\n");
+        System.out.println("\n");
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273774");
-           System.out.println("\n");
+        System.out.println("\n");
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273775");
-           System.out.println("\n");
+        System.out.println("\n");
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273776");
-           System.out.println("\n");
+        System.out.println("\n");
 
         System.out.println("\n\t  ------------------------------------- Generador Reportes -------------------------------------------");
         GeneradorReportes reportes = new GeneradorReportes();

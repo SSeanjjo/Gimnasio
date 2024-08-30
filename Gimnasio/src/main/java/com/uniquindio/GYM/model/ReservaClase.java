@@ -1,4 +1,5 @@
 package com.uniquindio.GYM.model;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -19,8 +20,8 @@ public class ReservaClase {
     }
 
 
-    public static ArrayList<ReservaClase>  reservarClase(ReservaClase reservaClase, ArrayList<ReservaClase> listaReservas){
-        if(reservaClase.clase.getCapacidadPlazas() < reservaClase.clase.getCAPACIDADMAXIMA()){
+    public static ArrayList<ReservaClase> reservarClase(ReservaClase reservaClase, ArrayList<ReservaClase> listaReservas) {
+        if (reservaClase.clase.getCapacidadPlazas() < reservaClase.clase.getCAPACIDADMAXIMA()) {
             reservaClase.clase.setCapacidadPlazas(reservaClase.clase.getCapacidadPlazas() + 1);
             listaReservas.add(reservaClase);
             //System.out.println("Reserva exitosa");
@@ -30,9 +31,9 @@ public class ReservaClase {
     }
 
 
-    public static ArrayList<ReservaClase> cancelarReserva(ArrayList<ReservaClase> listaReservas, String cedula, LocalDate fechaReserva){
-        for(ReservaClase reservaClase : listaReservas){
-            if(reservaClase.cliente.getCedula().equals(cedula) && reservaClase.fechaReserva.equals(fechaReserva)){
+    public static ArrayList<ReservaClase> cancelarReserva(ArrayList<ReservaClase> listaReservas, String cedula, LocalDate fechaReserva) {
+        for (ReservaClase reservaClase : listaReservas) {
+            if (reservaClase.cliente.getCedula().equals(cedula) && reservaClase.fechaReserva.equals(fechaReserva)) {
                 reservaClase.clase.setCapacidadPlazas(reservaClase.clase.getCapacidadPlazas() - 1);
                 listaReservas.remove(reservaClase);
                 System.out.println("Reserva cancelada");

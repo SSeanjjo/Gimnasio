@@ -1,5 +1,7 @@
 package com.uniquindio.GYM.model;
+
 import com.uniquindio.GYM.model.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -40,7 +42,8 @@ public class Gimnasio {
         this.listaReservas = new ArrayList<ReservaClase>();
         this.listaEntrenamientos = new ArrayList<RegistroEntrenamiento>();
     }
-    public void quemarDatos(){
+
+    public void quemarDatos() {
         //sección para quemar entrenadores;
 //        listaEntrenadores.add(new Instructor("1183369233", "brando Steven", EspecialidadEnum.AEROBICO));
 //        listaEntrenadores.add(new Instructor("1183928733", "Juan Sebastian", EspecialidadEnum.CIRCUITO));
