@@ -6,13 +6,14 @@ import java.time.*;
 import java.util.*;
 
 import static com.uniquindio.GYM.model.Clase.busquedaClase;
+import static com.uniquindio.GYM.model.ReservaClase.cancelarReserva;
 import static com.uniquindio.GYM.model.person.Cliente.actualizarCliente;
 
 public class Main {
     public static void main(String[] args) {
         Gimnasio gimnasio = new Gimnasio("Gym Pro");
         System.out.println("\t \t \t \t \t \t \t \t" + gimnasio.getNombre()+"\n");
-        System.out.println(" --------------------------------------- \t CLiente -----------------------------------------");
+        System.out.println(" --------------------------------------- CLiente -----------------------------------------");
 
         Cliente cliente1 = new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf");
         Cliente cliente2 = new Cliente("10273774", "Maria Lopez", "Cl 45 Bogota", "300123456", "maria@gmail.com", "password1");
@@ -39,7 +40,7 @@ public class Main {
         cliente10.removerCliente("10273782", gimnasio.getListaClientes());
         System.out.println("Cliente: " + cliente10.getCedula() + " - " + cliente10.getNombre());
         cliente1.removerCliente("0000", gimnasio.getListaClientes());;
-        System.out.println("\n\t --------------------------------- Instructor -----------------------------------------------");
+        System.out.println(" --------------------------------- Instructor -----------------------------------------------");
 
 
         // Add instructors
@@ -78,29 +79,33 @@ public class Main {
         gimnasio.getListaClases().add(new Clase(5, "Aerobics", new ArrayList<>(Arrays.asList(sesion2, sesion4)), 10, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 30), true, TipoClase.AEROBICOS, instructor5));
 
 
-        System.out.println("\n\t --------------------------------Clases ------------------------------------------------");
+        System.out.println("\n--------------------------------Clases ------------------------------------------------");
 
         ArrayList<Clase> clase =  busquedaClase(TipoClase.ZUMBA, instructor1, sesion1, gimnasio.getListaClases());
         System.out.println("\nClases encontradas:");
         for (Clase c : clase) {
             System.out.println(c.getTipoClase() + " - " + c.getInstructor().getNombre() + " - " + c.getHorario());
         }
-        ArrayList<Clase> clase2 =  busquedaClase(TipoClase.CROSSFIT, instructor2, sesion4, gimnasio.getListaClases());
-        System.out.println("\nClases encontradas:");
-        for (Clase c : clase2) {
-            System.out.println(c.getTipoClase() + " - " + c.getInstructor().getNombre() + " - " + c.getHorario());
+        System.out.println("\nLista de reservas");
+        ReservaClase reserva1 = new ReservaClase(gimnasio.getListaClases().get(0), cliente1, LocalDate.of(2024, 8, 22));
+        ReservaClase reserva2 = new ReservaClase(gimnasio.getListaClases().get(1), cliente2, LocalDate.of(2024, 8, 22));
+        ReservaClase.reservarClase(reserva1, gimnasio.getListaReservas());
+        ArrayList<ReservaClase> listaReservas =  ReservaClase.reservarClase(reserva2, gimnasio.getListaReservas());
+        for (ReservaClase r : listaReservas) {
+            System.out.println(r.getCliente().getNombre() + " - " + r.getClase().getNombre() + " - " + r.getFechaReserva());
+            System.out.println("Reserva exitosa");
         }
 
-        ReservaClase reserva = new ReservaClase(gimnasio.getListaClases().get(0), cliente1, LocalDate.of(2024, 8, 22));
-        ArrayList<ReservaClase> listaReservas = new ArrayList<>();
+        System.out.println("\nreservas de usario a cancelar: " );
+        System.out.println(cliente1.getNombre() +" - "+cliente1.getCedula() + " - " + LocalDate.of(2024, 8, 22));
+        ArrayList<ReservaClase> listaReservasCancel = cancelarReserva(gimnasio.getListaReservas(), cliente1.getCedula(), LocalDate.of(2024, 8, 22));
+        System.out.println("\nLista de reservas");
+        for (ReservaClase r : listaReservasCancel) {
+            System.out.println(r.getCliente().getNombre() + " - " + r.getClase().getNombre() + " - " + r.getFechaReserva());
+        }
 
-
-        System.out.println('\n');
-        listaReservas = ReservaClase.reservarClase(reserva, listaReservas);
-        ReservaClase.cancelarClase(listaReservas, "10273773", LocalDate.of(2024, 8, 22));
-
-
-        System.out.println(" \n\t ------------------------------------ Registro Entrenamientos--------------------------------------------");
+        System.out.println(" --------------------------------------------------------------------------------");
+        System.out.println(" ------------------------------------ Registro Entrenamientos--------------------------------------------");
 
 
         // Add training records with different dates
@@ -125,18 +130,17 @@ public class Main {
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273776");
            System.out.println("\n");
 
-        System.out.println("\n\t  ------------------------------------- Generador Reportes -------------------------------------------");
+        System.out.println(" ------------------------------------- Generador Reportes -------------------------------------------");
 //
         GeneradorReportes reportes = new GeneradorReportes();
         reportes.clasePopular(gimnasio.getListaClases());
         System.out.println("\n");
-
         ArrayList<Cliente> topTresClientes = reportes.toptresUsuariosMasActivos(gimnasio.getListaEntrenamientos());
         reportes.ejercicioMasPracticado(gimnasio.getListaEntrenamientos());
 
         // Print top 3 most active clients
         System.out.println();
-        System.out.println("\n \n\t ----------------------------- Top 3 clientes más activos -------------------------------------------------");
+        System.out.println("\n ----------------------------- Top 3 clientes más activos -------------------------------------------------");
         for (Cliente cliente : topTresClientes) {
             System.out.println(cliente.getNombre());
         }
@@ -154,7 +158,7 @@ public class Main {
 
 
 
-        
+
 
     }
 
