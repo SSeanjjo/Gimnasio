@@ -4,8 +4,11 @@ import com.uniquindio.GYM.model.EspecialidadEnum;
 import com.uniquindio.GYM.model.Usuario;
 import com.uniquindio.GYM.model.Gimnasio;
 import com.uniquindio.GYM.model.person.Comprobador;
+import lombok.Data;
 
+import java.util.ArrayList;
 
+@Data
 public class Instructor extends Usuario {
     private EspecialidadEnum especialidad;
     Gimnasio gimnasio = new Gimnasio();
@@ -16,17 +19,18 @@ public class Instructor extends Usuario {
         this.especialidad = especialidad;
     }
 
-    public EspecialidadEnum getEspecialidad() {
-        return especialidad;
-    }
+//    public EspecialidadEnum getEspecialidad() {
+//        return especialidad;
+//    }
+//
+//    public void setEspecialidad(EspecialidadEnum especialidad) {
+//        this.especialidad = especialidad;
+//    }
 
-    public void setEspecialidad(EspecialidadEnum especialidad) {
-        this.especialidad = especialidad;
-    }
-
-    public boolean comprobarExistencia(){
+    public boolean comprobarExistencia(String cedula, ArrayList<Instructor> listaC){
         try{
             comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaEntrenadores());
+            comprobador.comprobarExistencia(cedula, );
             return true;
         } catch (RuntimeException e) {
             return false;

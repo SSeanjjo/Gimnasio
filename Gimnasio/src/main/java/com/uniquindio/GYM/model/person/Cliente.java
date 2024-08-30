@@ -78,9 +78,9 @@ public class Cliente extends Usuario {
         Cliente clienteExistente = comprobador.comprobarExistencia(cedula, listaClientes);
         if (clienteExistente != null) {
             listaClientes.remove(clienteExistente);
-            System.out.println("Cliente eliminado correctamente.");
+            System.out.println("\nCliente eliminado correctamente.");
         } else {
-            System.out.println("No se encontró un cliente con la cédula especificada.");
+            System.out.println("\nNo se encontró un cliente con la cédula especificada.");
         }
     }
 

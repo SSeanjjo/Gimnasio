@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Gimnasio gimnasio = new Gimnasio("Gym Pro");
         System.out.println("\t \t \t \t \t \t \t \t" + gimnasio.getNombre()+"\n");
+        System.out.println(" --------------------------------------- CLiente -----------------------------------------");
 
         Cliente cliente1 = new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf");
         Cliente cliente2 = new Cliente("10273774", "Maria Lopez", "Cl 45 Bogota", "300123456", "maria@gmail.com", "password1");
@@ -23,18 +24,19 @@ public class Main {
 
         gimnasio.getListaClientes().addAll(Arrays.asList(cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10));
 
-        System.out.println("\tClientes registrados:");
+        System.out.println("Clientes registrados:");
         for (Cliente cliente : gimnasio.getListaClientes()) {
             System.out.println(cliente.getNombre() + " - " + cliente.getCedula());
         }
-        System.out.println(" --------------------------------------------------------------------------------");
-
+        System.out.println('\n');
         System.out.println("Cliente a actualizar: " + cliente3.getCedula() + " - " + cliente3.getNombre());
         cliente3.actualizarCliente("10273775",  gimnasio.getListaClientes(),  new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf"));
         System.out.println("Cliente Actualizado: " + cliente3.getCedula() + " - " + cliente3.getNombre());
 
         cliente10.removerCliente("10273782", gimnasio.getListaClientes());
         System.out.println("Cliente: " + cliente10.getCedula() + " - " + cliente10.getNombre());
+        cliente1.removerCliente("0000", gimnasio.getListaClientes());;
+        System.out.println(" --------------------------------- Instructor -----------------------------------------------");
 
 
         // Add instructors
@@ -51,6 +53,8 @@ public class Main {
         for (Instructor instructor : gimnasio.getListaEntrenadores()) {
             System.out.println(instructor.getNombre() + " - " + instructor.getCedula());
         }
+
+        System.out.println(" --------------------------------------------------------------------------------");
 
         // Add sessions
         Sesion sesion1 = new Sesion(DiaSemana.lunes, LocalTime.of(7, 0), LocalTime.of(9, 0));
