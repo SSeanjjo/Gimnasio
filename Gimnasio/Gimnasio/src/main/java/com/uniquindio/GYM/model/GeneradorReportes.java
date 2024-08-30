@@ -17,38 +17,6 @@ public class GeneradorReportes {
         System.out.println("La clase más popular es: " + listaClases.get(index).getNombre());
     }
 
-//    public ArrayList<Cliente> toptresUsuariosMasActivos(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
-//        Cliente primeroCliente = null, segundoCliente = null, terceroCliente = null;
-//        double primero = 0, segundo = 0, tercero = 0;
-//
-//        for (RegistroEntrenamiento entrenamiento : listaEntrenamientos) {
-//            double caloriasQuemadas = entrenamiento.getCaloriasQuemadas();
-//            Cliente cliente = entrenamiento.getCliente();
-//
-//            if (caloriasQuemadas > primero) {
-//                tercero = segundo;
-//                terceroCliente = segundoCliente;
-//                segundo = primero;
-//                segundoCliente = primeroCliente;
-//                primero = caloriasQuemadas;
-//                primeroCliente = cliente;
-//            } else if (caloriasQuemadas > segundo) {
-//                tercero = segundo;
-//                terceroCliente = segundoCliente;
-//                segundo = caloriasQuemadas;
-//                segundoCliente = cliente;
-//            } else if (caloriasQuemadas > tercero) {
-//                tercero = caloriasQuemadas;
-//                terceroCliente = cliente;
-//            }
-//        }
-//        ArrayList<Cliente> topTres = new ArrayList<>();
-//        if (primeroCliente != null) topTres.add(primeroCliente);
-//        if (segundoCliente != null) topTres.add(segundoCliente);
-//        if (terceroCliente != null) topTres.add(terceroCliente);
-//
-//        return topTres;
-//    }
 public ArrayList<RegistroEntrenamiento> toptresUsuariosMasActivos(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
     RegistroEntrenamiento primeroEntrenamiento = null, segundoEntrenamiento = null, terceroEntrenamiento = null;
     double primero = 0, segundo = 0, tercero = 0;
@@ -81,6 +49,7 @@ public ArrayList<RegistroEntrenamiento> toptresUsuariosMasActivos(ArrayList<Regi
 
     return topTresEntrenamientos;
 }
+
 
     public void ejercicioMasPracticado(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
         ArrayList<TipoEntrenamiento> tiposEntrenamiento = new ArrayList<>();
