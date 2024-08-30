@@ -7,11 +7,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Option 1: Using the no-arg constructor
         Gimnasio gimnasio = new Gimnasio("Gym Pro");
         System.out.println("\t \t \t \t \t \t \t \t" + gimnasio.getNombre()+"\n");
 
-        // Add clients
         Cliente cliente1 = new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf");
         Cliente cliente2 = new Cliente("10273774", "Maria Lopez", "Cl 45 Bogota", "300123456", "maria@gmail.com", "password1");
         Cliente cliente3 = new Cliente("10273775", "Andres Gomez", "Av 12 Medellin", "301654789", "andres@gmail.com", "password2");
@@ -25,12 +23,19 @@ public class Main {
 
         gimnasio.getListaClientes().addAll(Arrays.asList(cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10));
 
-        // Print clients
-        System.out.println(" --------------------------------------------------------------------------------");
-        System.out.println("Clientes registrados:");
+        System.out.println("\tClientes registrados:");
         for (Cliente cliente : gimnasio.getListaClientes()) {
             System.out.println(cliente.getNombre() + " - " + cliente.getCedula());
         }
+        System.out.println(" --------------------------------------------------------------------------------");
+//        // Use Cliente methods
+        cliente1.actualizarCliente("101010101","Julian Casas Updated", "new address", "311302921", "new email", "new password");
+        System.out.println("Cliente Actualizado: " + cliente1);
+//        cliente1.removerCLiente();
+
+        cliente3.actualizarCliente("10273775","Andrea Gonzales", "Calle 4 83-26", "302399802", "Andre_Go@mail.com", "123456");
+        System.out.println("Cliente Actualizado: " + cliente3);
+
 
         // Add instructors
         Instructor instructor1 = new Instructor("1183369233", "Brando Steven", EspecialidadEnum.AEROBICO);
@@ -99,9 +104,7 @@ public class Main {
         listaReservas = ReservaClase.reservarClase(reserva, listaReservas);
         ReservaClase.cancelarClase(listaReservas, "10273773", LocalDate.of(2024, 8, 22));
 
-        // Use Cliente methods
-        cliente1.actualizarCliente("Julian Casas Updated", "new address", "new phone", "new email", "new password");
-        cliente1.removerCLiente();
+
 
         // Use RegistroEntrenamiento methods
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273773");
