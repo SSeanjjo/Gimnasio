@@ -5,6 +5,9 @@ import com.uniquindio.GYM.model.person.*;
 import java.time.*;
 import java.util.*;
 
+import static com.uniquindio.GYM.model.Clase.busquedaClase;
+import static com.uniquindio.GYM.model.person.Cliente.actualizarCliente;
+
 public class Main {
     public static void main(String[] args) {
         Gimnasio gimnasio = new Gimnasio("Gym Pro");
@@ -30,7 +33,7 @@ public class Main {
         }
         System.out.println('\n');
         System.out.println("Cliente a actualizar: " + cliente3.getCedula() + " - " + cliente3.getNombre());
-        cliente3.actualizarCliente("10273775",  gimnasio.getListaClientes(),  new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf"));
+        actualizarCliente("10273775",  gimnasio.getListaClientes(),  new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf"));
         System.out.println("Cliente Actualizado: " + cliente3.getCedula() + " - " + cliente3.getNombre());
 
         cliente10.removerCliente("10273782", gimnasio.getListaClientes());
@@ -109,8 +112,20 @@ public class Main {
         ReservaClase.cancelarClase(listaReservas, "10273773", LocalDate.of(2024, 8, 22));
 
 
-
         // Use RegistroEntrenamiento methods
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273773");
+
+
+        System.out.println("\n--------------------------------------------------------------------------------");
+
+        ArrayList<Clase> clase =  busquedaClase(TipoClase.ZUMBA, instructor1, sesion1, gimnasio.getListaClases());
+        System.out.println("\nClases encontradas:");
+        for (Clase c : clase) {
+            System.out.println(c.getTipoClase() + " - " + c.getInstructor().getNombre() + " - " + c.getHorario());
+        }
+
+        
+
     }
+
 }

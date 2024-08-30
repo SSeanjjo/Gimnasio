@@ -20,27 +20,6 @@ public class ReservaClase {
     }
 
 
-//public static ArrayList<ReservaClase>  reservarClase( ReservaClase reservaClase, ArrayList<ReservaClase> listaReservas){
-//        if(reservaClase.clase.getCapacidadPlazas() < reservaClase.clase.getCAPACIDADMAXIMA()){
-//            reservaClase.clase.setCapacidadPlazas(reservaClase.clase.getCapacidadPlazas() + 1);
-//            System.out.println("Reserva exitosa");
-//            listaReservas.add(reservaClase);
-//            return listaReservas;
-//        }
-//        return null;
-//    }
-//
-//
-//    public static void cancelarClase( ArrayList<ReservaClase> listaReservas, String cedula, LocalDate fechaReserva){
-//        for(ReservaClase reservaClase : listaReservas){
-//            if(reservaClase.cliente.getCedula().equals(cedula) && reservaClase.fechaReserva.equals(fechaReserva)){
-//                reservaClase.clase.setCapacidadPlazas(reservaClase.clase.getCapacidadPlazas() - 1);
-//                listaReservas.remove(reservaClase);
-//                // Se elimina la reserva de la lista de
-//                System.out.println("Reserva cancelada");
-//            }
-//        }
-//    }
     public static ArrayList<ReservaClase> reservarClase(ReservaClase reserva, ArrayList<ReservaClase> listaReservas) {
         listaReservas.add(reserva);
         System.out.println("Reserva exitosa");
@@ -58,16 +37,5 @@ public class ReservaClase {
         }
     }
 
-    public Clase getClase() {
-        return clase;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public LocalDate getFechaReserva() {
-        return fechaReserva;
-    }
 
 }

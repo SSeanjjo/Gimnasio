@@ -34,73 +34,24 @@ public class Clase {
         this.instructor = instructor;
         gimnasio.getListaClases().add(this);
     }
-//    public int getId() {
-//        return id;
-//    }
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//    public String getNombre() {
-//        return nombre;
-//    }
-//    public void setNombre(String nombre) {
-//        this.nombre = nombre;
-//    }
-//    public ArrayList<Sesion> getHorario() {
-//        return horario;
-//    }
-//    public void setHorario(ArrayList<Sesion> horario) {
-//        this.horario = horario;
-//    }
-//    public int getCapacidad() {
-//        return capacidad;
-//    }
-//    public void setCapacidad(int capacidad) {
-//        this.capacidad = capacidad;
-//    }
-//    public LocalDate getFechaInicio() {
-//        return fechaInicio;
-//    }
-//    public void setFechaInicio(LocalDate fechaInicio) {
-//        this.fechaInicio = fechaInicio;
-//    }
-//    public LocalDate getFechaFin() {
-//        return fechaFin;
-//    }
-//    public void setFechaFin(LocalDate fechaFin) {
-//        this.fechaFin = fechaFin;
-//    }
-//    public boolean isDisponible() {
-//        return disponible;
-//    }
-//    public void setDisponible(boolean disponible) {
-//        this.disponible = disponible;
-//    }
-//    public TipoClase getTipoClase() {
-//        return tipoClase;
-//    }
-//    public void setTipoClase(TipoClase tipoClase) {
-//        this.tipoClase = tipoClase;
-//    }
-//    public Instructor getInstructor() {
-//        return instructor;
-//    }
-//    public void setInstructor(Instructor instructor) {
-//        this.instructor = instructor;
-//    }
 
-    public <T>T busquedaCLase(TipoClase tipoClase, Enum EspecialidadEnum, Sesion horario, ArrayList<T> listaClases){
-        for(T clase : listaClases){
-            if(clase.equals(tipoClase)){
-                return clase;
-            } else if ( clase.equals(EspecialidadEnum)) {
-                return clase;
-            } else if ( clase.equals(horario)){
-                return clase;
+
+     public static ArrayList<Clase> busquedaClase(TipoClase tipoClase, Instructor instructor, Sesion horario, ArrayList<Clase> listaClases) {
+        ArrayList<Clase> clasesEncontradas = new ArrayList<>();
+        for (Clase clase : listaClases) {
+            if (clase.getTipoClase().equals(tipoClase)) {
+                clasesEncontradas.add(clase);
+                return clasesEncontradas;
+            } else if (clase.getInstructor().getNombre().equals(instructor.getNombre())) {
+                clasesEncontradas.add(clase);
+                return clasesEncontradas;
+            } else if (clase.getHorario().equals(horario)) {
+                clasesEncontradas.add(clase);
+                return clasesEncontradas;
             }
-        } System.out.println("No existe ningún registro asociado a esta cédula");
-        {
-            return null;
         }
+        System.out.println("No existe ningún registro asociado a la búsqueda");
+        return null;
     }
+
 }

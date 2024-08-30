@@ -46,7 +46,7 @@ public class Cliente extends Usuario {
     }
 
     //    //update
-    public void actualizarCliente(String cedula, ArrayList<Cliente> listaClientes, Cliente clienteUpdate) {
+    public static void actualizarCliente(String cedula, ArrayList<Cliente> listaClientes, Cliente clienteUpdate) {
         boolean encontrado = false;
         for (Cliente cliente : listaClientes) {
             if (cliente.getCedula().equalsIgnoreCase(cedula)) {
