@@ -55,25 +55,34 @@ public class Cliente extends Usuario {
                 cliente.setTelefono(clienteUpdate.getTelefono());
                 cliente.setCorreo(clienteUpdate.getCorreo());
                 cliente.setContrasena(clienteUpdate.getContrasena());
-                System.out.println("Cliente actualizado correctamente.");
+                System.out.print("Cliente actualizado correctamente: ");
                 encontrado = true;
             }
         }
         if (!encontrado) System.out.println("No se encontró un cliente con la cédula especificada.");
     }
 
-    public void removerCLiente() {
-        Cliente clienteExistente = (Cliente) comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaClientes());
-        {
-            if (clienteExistente != null) {
-                gimnasio.getListaClientes().remove(clienteExistente);
-                System.out.println("Cliente eliminado correctamente.");
-            } else {
-                System.out.println("No se encontró un cliente con la cédula especificada.");
-            }
+//    public void removerCLiente() {
+//        Cliente clienteExistente = (Cliente) comprobador.comprobarExistencia(this.getCedula(), gimnasio.getListaClientes());
+//        {
+//            if (clienteExistente != null) {
+//                gimnasio.getListaClientes().remove(clienteExistente);
+//                System.out.println("Cliente eliminado correctamente.");
+//            } else {
+//                System.out.println("No se encontró un cliente con la cédula especificada.");
+//            }
+//        }
+//    }
+
+    public void removerCliente(String cedula, ArrayList<Cliente> listaClientes) {
+        Cliente clienteExistente = comprobador.comprobarExistencia(cedula, listaClientes);
+        if (clienteExistente != null) {
+            listaClientes.remove(clienteExistente);
+            System.out.println("Cliente eliminado correctamente.");
+        } else {
+            System.out.println("No se encontró un cliente con la cédula especificada.");
         }
     }
-
 
 }
 

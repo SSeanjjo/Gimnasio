@@ -33,6 +33,9 @@ public class Main {
         cliente3.actualizarCliente("10273775",  gimnasio.getListaClientes(),  new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf"));
         System.out.println("Cliente Actualizado: " + cliente3.getCedula() + " - " + cliente3.getNombre());
 
+        cliente10.removerCliente("10273782", gimnasio.getListaClientes());
+        System.out.println("Cliente: " + cliente10.getCedula() + " - " + cliente10.getNombre());
+
 
         // Add instructors
         Instructor instructor1 = new Instructor("1183369233", "Brando Steven", EspecialidadEnum.AEROBICO);

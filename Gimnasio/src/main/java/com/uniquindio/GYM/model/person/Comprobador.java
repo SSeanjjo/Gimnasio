@@ -1,9 +1,7 @@
 package com.uniquindio.GYM.model.person;
-
 import com.uniquindio.GYM.model.Usuario;
 
 import java.util.ArrayList;
-
 public class Comprobador {
     // Metodo generico para comprobar existencia de cedula
     public <T extends Usuario> T comprobarExistencia(String cedula, ArrayList<T> lista) {
