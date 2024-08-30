@@ -6,28 +6,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.uniquindio.GYM.model.person.*;
+import lombok.Data;
 
+@Data
 
 public class Gimnasio {
     private String nombre;
-    private ArrayList<Cliente> listaClientes;
-    private ArrayList<Instructor> listaEntrenadores;
-    private ArrayList<Clase> listaClases = new ArrayList<Clase>();
-    private ArrayList<ReservaClase> listaReservas;
-    private ArrayList<RegistroEntrenamiento> listaEntrenamientos;
+    private ArrayList<Cliente> listaClientes = new ArrayList<>();
+    private ArrayList<Instructor> listaEntrenadores = new ArrayList<>();
+    private ArrayList<Clase> listaClases = new ArrayList<>();
+    private ArrayList<ReservaClase> listaReservas = new ArrayList<>();
+    private ArrayList<RegistroEntrenamiento> listaEntrenamientos = new ArrayList<>();
 
-
+    // Constructor with all fields
     public Gimnasio(String nombre, ArrayList<Cliente> listaClientes, ArrayList<Instructor> listaEntrenadores, ArrayList<Clase> listaClases, ArrayList<ReservaClase> listaReservas, ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
         this.nombre = nombre;
-        this.listaClientes = listaClientes;
-        this.listaEntrenadores = listaEntrenadores;
-        this.listaClases = listaClases;
-        this.listaReservas = listaReservas;
-        this.listaEntrenamientos = listaEntrenamientos;
+        this.listaClientes = listaClientes != null ? listaClientes : new ArrayList<>();
+        this.listaEntrenadores = listaEntrenadores != null ? listaEntrenadores : new ArrayList<>();
+        this.listaClases = listaClases != null ? listaClases : new ArrayList<>();
+        this.listaReservas = listaReservas != null ? listaReservas : new ArrayList<>();
+        this.listaEntrenamientos = listaEntrenamientos != null ? listaEntrenamientos : new ArrayList<>();
     }
 
     public Gimnasio() {
     }
+
 
     public Gimnasio(String nombre) {
         this.nombre = nombre;
@@ -72,45 +75,5 @@ public class Gimnasio {
         for (Cliente cliente : listaClientes) {
             System.out.println(cliente.toString());
         }
-
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public ArrayList<Cliente> getListaClientes() {
-        return listaClientes;
-    }
-    public void setListaClientes(ArrayList<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
-    }
-    public ArrayList<Instructor> getListaEntrenadores() {
-        return listaEntrenadores;
-    }
-    public void setListaEntrenadores(ArrayList<Instructor> listaEntrenadores) {
-        this.listaEntrenadores = listaEntrenadores;
-    }
-    public ArrayList<Clase> getListaClases() {
-        return listaClases;
-    }
-    public void setListaClases(ArrayList<Clase> listaClases) {
-        this.listaClases = listaClases;
-    }
-    public ArrayList<RegistroEntrenamiento> getListaEntrenamientos() {
-        return listaEntrenamientos;
-    }
-    public void setListaEntrenamientos(ArrayList<RegistroEntrenamiento> listaEntrenamientos) {
-        this.listaEntrenamientos = listaEntrenamientos;
-    }
-    @Override
-    public String toString() {
-        return "Gimnasio [nombre=" + nombre + ", listaClientes=" + listaClientes + ", listaEntrenadores="
-                + listaEntrenadores + ", listaClases=" + listaClases + ", listaEntrenamientos=" + listaEntrenamientos
-                + "]";
-    }
-    
-    
 }

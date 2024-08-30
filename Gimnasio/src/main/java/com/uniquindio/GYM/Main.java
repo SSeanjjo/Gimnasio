@@ -7,24 +7,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-//        Gimnasio gimnasio = new Gimnasio("gym");
-//        gimnasio.getListaClientes().add(new Cliente("10273773", "Julian casas", "br 23 armenia", "323333451", "jul@gmail.com", "asdf"));
-//
-//        gimnasio.getListaEntrenadores().add(new Instructor("1183369233", "brando Steven", EspecialidadEnum.AEROBICO));
-//        gimnasio.getListaEntrenadores().add(new Instructor("1183369234", "Carlos Perez", EspecialidadEnum.PESAS));
-//
-//        Sesion sesion1 = new Sesion(DiaSemana.lunes, LocalTime.of(7, 0), LocalTime.of(9, 0));
-//        Sesion sesion2 = new Sesion(DiaSemana.martes, LocalTime.of(7, 0), LocalTime.of(9, 0));
-//        Sesion sesion3 = new Sesion(DiaSemana.miercoles, LocalTime.of(7, 0), LocalTime.of(9, 0));
-//        Sesion sesion4 = new Sesion(DiaSemana.jueves, LocalTime.of(14, 0), LocalTime.of(16, 0));
-//        Sesion sesion5 = new Sesion(DiaSemana.viernes, LocalTime.of(7, 0), LocalTime.of(9, 0));
-//        List<Instructor> listaEntrenadores = gimnasio.getListaEntrenadores();
-//
-//        gimnasio.getListaClases().add(new Clase(1, "zumba básica", new ArrayList<>(Arrays.asList(sesion1, sesion2, sesion5)), 10, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 30), true, TipoClase.ZUMBA, listaEntrenadores.get(0)));
-//        gimnasio.getListaClases().add(new Clase(2, "crossfit avanzado", new ArrayList<>(Arrays.asList(sesion1, sesion4)), 10, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 30), true, TipoClase.CROSSFIT, listaEntrenadores.get(1)));
-//        gimnasio.getListaClases().add(new Clase(3, "yoga", new ArrayList<>(Arrays.asList(sesion3, sesion5)), 10, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 30), true, TipoClase.YOGA, gimnasio.getListaEntrenadores().get(0)));
-//        gimnasio.getListaClases().add(new Clase(5, "yoga", new ArrayList<>(Arrays.asList(sesion1, sesion3, sesion5)), 10, LocalDate.of(2024, 8, 20), LocalDate.of(2024, 8, 30), true, TipoClase.PILATES, gimnasio.getListaEntrenadores().get(1)));
+        // Option 1: Using the no-arg constructor
         Gimnasio gimnasio = new Gimnasio("Gym Pro");
+        System.out.println("\t \t \t \t \t \t \t \t" + gimnasio.getNombre()+"\n");
 
         // Add clients
         Cliente cliente1 = new Cliente("10273773", "Julian Casas", "Br 23 Armenia", "323333451", "jul@gmail.com", "asdf");
@@ -41,6 +26,7 @@ public class Main {
         gimnasio.getListaClientes().addAll(Arrays.asList(cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10));
 
         // Print clients
+        System.out.println(" --------------------------------------------------------------------------------");
         System.out.println("Clientes registrados:");
         for (Cliente cliente : gimnasio.getListaClientes()) {
             System.out.println(cliente.getNombre() + " - " + cliente.getCedula());
@@ -110,8 +96,8 @@ public class Main {
         // Use ReservaClase methods
         ReservaClase reserva = new ReservaClase(gimnasio.getListaClases().get(0), cliente1, LocalDate.of(2024, 8, 22));
         ArrayList<ReservaClase> listaReservas = new ArrayList<>();
-        listaReservas = reserva.reservarClase(reserva, listaReservas);
-        reserva.cancelarClase(listaReservas, "10273773", LocalDate.of(2024, 8, 22));
+        listaReservas = ReservaClase.reservarClase(reserva, listaReservas);
+        ReservaClase.cancelarClase(listaReservas, "10273773", LocalDate.of(2024, 8, 22));
 
         // Use Cliente methods
         cliente1.actualizarCliente("Julian Casas Updated", "new address", "new phone", "new email", "new password");
@@ -119,7 +105,5 @@ public class Main {
 
         // Use RegistroEntrenamiento methods
         entrenamiento1.historialEntrenamientos(gimnasio.getListaEntrenamientos(), "10273773");
-    }
-
     }
 }
