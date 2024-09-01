@@ -132,18 +132,6 @@ public class Main {
         GeneradorReportes reportes = new GeneradorReportes();
         reportes.clasePopular(gimnasio.getListaClases());
 
-        ArrayList<RegistroEntrenamiento> topTresEntrenamientos = reportes.toptresUsuariosMasActivos(gimnasio.getListaEntrenamientos());
-        reportes.ejercicioMasPracticado(gimnasio.getListaEntrenamientos());
 
-
-        System.out.println("\n\t ----------------------------- Top 3 clientes más activos -------------------------------------------------");
-        System.out.println("\n");
-        for (RegistroEntrenamiento entrenamiento : topTresEntrenamientos) {
-            Cliente cliente = entrenamiento.getCliente();
-            System.out.println(cliente.getNombre() + " - " +
-                    entrenamiento.getTipoEntrenamiento() + " - " +
-                    entrenamiento.getDuracion() + " minutos - " +
-                    entrenamiento.getCaloriasQuemadas() + " calorías quemadas");
-        }
     }
 }

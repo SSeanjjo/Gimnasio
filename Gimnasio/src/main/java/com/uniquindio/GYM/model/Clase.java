@@ -21,6 +21,7 @@ public class Clase {
     private TipoClase tipoClase;
     private Instructor instructor;
 
+
     public Clase(int id, String nombre, ArrayList<Sesion> horario, int capacidadPlazas, LocalDate fechaInicio,
                  LocalDate fechaFin, boolean disponible, TipoClase tipoClase, Instructor instructor) {
         this.id = String.valueOf(id);
